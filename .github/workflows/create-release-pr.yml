@@ -93,8 +93,6 @@ jobs:
           semver-version: ${{ inputs.semver-version }}
           previous-version-ref: ${{ needs.resolve-previous-ref.outputs.previous_ref }}
           mobile-build-version: '12345'
-          # This token needs write permissions to metamask-mobile & read permissions to metamask-planning
-          # If called from auto-create-release-pr use the PR_TOKEN passed in as an input, if called manually use github secret token values
-          # (this is due to github limitations on fetching secrets from called workflows).
-          github-token: ${{ github.event_name == 'workflow_dispatch' && secrets.PR_TOKEN || secrets.github-token }}
-          google-application-creds-base64: ${{ github.event_name == 'workflow_dispatch' && secrets.GCP_RLS_SHEET_ACCOUNT_BASE64 || secrets.google-application-creds-base64 }}
+          # Use standard GITHUB_TOKEN for testing in fork
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          google-application-creds-base64: 'dummy'
