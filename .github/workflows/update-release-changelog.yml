@@ -54,4 +54,4 @@ jobs:
           repository-url: ${{ github.server_url }}/${{ github.repository }}
           platform: mobile
           previous-version-ref: 'null'
-          github-token: ${{ secrets.PR_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
